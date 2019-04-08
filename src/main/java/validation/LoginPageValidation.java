@@ -11,11 +11,10 @@ public class LoginPageValidation {
         String error = null;
         String query = "SELECT * FROM date.user where name = '" + name + "'";
         ResultSet exist = MySQLMethods.executeQuery(query);
-
-        if (!exist.next())
+        if (!exist.next()) {
             error = "A user not found";
+        }
         return error;
-
     }
 
 

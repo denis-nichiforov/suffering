@@ -26,24 +26,20 @@ public class LoginPage extends HttpServlet {
         HttpSession session = request.getSession();
         if (session != null) {
             session.getAttribute("sessionsId");
-
             session.removeAttribute("sessionsId");
         }
-
         request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
     }
 
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         JSONObject jsonEnt = new JSONObject();
         String user = request.getParameter("user");
         String password = request.getParameter("password");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession();
         Integer id = null;
-
 
         if (user != null) {
             try {
@@ -52,6 +48,7 @@ public class LoginPage extends HttpServlet {
                 e.printStackTrace();
             }
         }
+
 
         if (password != null) {
             try {
@@ -62,6 +59,7 @@ public class LoginPage extends HttpServlet {
         }
 
 
+
         String query = "SELECT id FROM date.user where name = '" + user + "'";
         ResultSet resultSet = null;
         try {
@@ -69,7 +67,6 @@ public class LoginPage extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         while (true) {
             try {
                 assert resultSet != null;
@@ -79,23 +76,14 @@ public class LoginPage extends HttpServlet {
             }
             try {
                 id = resultSet.getInt("id");
-                jsonEnt.put("id", id);
-
-
-
-
             } catch (SQLException e) {
                 e.printStackTrace();
             }
             session.setAttribute("sessionsId",id);
 
-
-
-            out.print(jsonEnt);
-            out.flush();
-            out.close();
-            request.getRequestDispatcher("/WEB-INF/view/main.jsp").forward(request, response);
-
         }
+        out.print(jsonEnt);
+        out.flush();
+        out.close();
     }
 }

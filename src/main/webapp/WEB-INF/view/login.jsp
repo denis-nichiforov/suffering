@@ -7,7 +7,6 @@
     <title>Simple login form</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-
     <script src="../../resources/include/jscripts/login.js"></script>
     <link rel="stylesheet" href="../../resources/include/style/login.css">
 
@@ -31,13 +30,10 @@
                 </a>
                 <button type="button" class="btn btn--right" id="button">Sign in  </button>
                 <a href="http://localhost:8080/registration" class="btn btn--right">Registration</a>
-
-
             </div>
         </form>
     </div>
 </div>
-
 
 </body>
 

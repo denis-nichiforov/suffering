@@ -6,12 +6,10 @@
     <meta charset="UTF-8">
     <title>Simple registration form</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 
-
-    <script src="../../resources/include/jscripts/ajax.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <script src="../../resources/include/jscripts/registration.js"></script>
     <link rel="stylesheet" href="../../resources/include/style/login.css">
-
 </head>
 
 <body>
@@ -39,7 +37,6 @@
         </form>
     </div>
 </div>
-
 
 </body>
 

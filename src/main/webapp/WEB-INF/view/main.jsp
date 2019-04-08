@@ -15,6 +15,7 @@
             <p1>name:</p1><input id="in1" name="name">
             <p2>message:</p2><textarea id="tn2" name="message"></textarea>
             <input id="ib1" type="submit" value="SEND" name="submit">
+            <a href="login">Logout</a>
         </div>
     </div>
 </form>
