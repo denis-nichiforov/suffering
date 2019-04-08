@@ -26,6 +26,7 @@ public class SocketServer {
     public void onClose(Session session) throws IOException {
         System.out.println("Close Connection ...");
         session.close();
+        client.remove(session);
 
     }
 
@@ -50,7 +51,7 @@ public class SocketServer {
 
     @OnMessage
     public String allMessage(String message) throws IOException {
-
+      
         for (Session session: client){
             session.getBasicRemote().sendText(message);
         }
