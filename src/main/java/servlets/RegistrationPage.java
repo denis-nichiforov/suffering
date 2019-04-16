@@ -44,21 +44,26 @@ public class RegistrationPage  extends HttpServlet {
         if (password != null){
             jsonEnt.put("password", RegistrationPageValidation.passwordRegistration(password));
         }
-        if (
-                !RegistrationPageValidation.passwordRepeatRegistration(password, passwordRepeat).equals("Passwords do not match")
-                        & !Objects.requireNonNull(user).equals("")
-                        & !Objects.requireNonNull(password).equals("")){
+        try {
+            if (!RegistrationPageValidation.passwordRepeatRegistration(password, passwordRepeat).equals("Passwords do not match")
+                    & RegistrationPageValidation.passwordRegistration(password).equals("")
+                    & RegistrationPageValidation.nameRegistration(user).equals("")
 
-            String query = "INSERT INTO `date`.`user` (`name`, `password`) VALUES ('"+user+"', '"+password+"');";
+            ){
 
-            try {
-                MySQLMethods.insertQuery(query);
-            } catch (SQLException e) {
-                e.printStackTrace();
+                String query = "INSERT INTO `date`.`user` (`name`, `password`) VALUES ('"+user+"', '"+password+"');";
+
+                try {
+                    MySQLMethods.insertQuery(query);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+            }else {
+                jsonEnt.put("passwordRepeat", RegistrationPageValidation.passwordRepeatRegistration(password,passwordRepeat));
             }
-
-        }else {
-            jsonEnt.put("passwordRepeat", RegistrationPageValidation.passwordRepeatRegistration(password,passwordRepeat));
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         out.print(jsonEnt);

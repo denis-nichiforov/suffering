@@ -1,6 +1,7 @@
 package servlets;
 
 
+import database.DBCPDataSource;
 import database.MySQLMethods;
 import org.json.JSONObject;
 import validation.LoginPageValidation;
@@ -13,20 +14,22 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @WebServlet("/login")
 public class LoginPage extends HttpServlet {
 
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
+
         if (session != null) {
             session.getAttribute("sessionsId");
             session.removeAttribute("sessionsId");
+
         }
         request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
     }
@@ -85,5 +88,6 @@ public class LoginPage extends HttpServlet {
         out.print(jsonEnt);
         out.flush();
         out.close();
+
     }
 }

@@ -1,11 +1,19 @@
 package database;
 
-import DBConfTemplate.MySQLConfigTemplate;
-import org.apache.commons.dbcp.BasicDataSource;
-
 import java.sql.*;
 
 public class MySQLMethods {
+
+
+    public static Connection connection;
+
+    static {
+        try {
+            connection = DBCPDataSource.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 //    private static Connection connection;
 //
@@ -39,10 +47,12 @@ public class MySQLMethods {
     public static ResultSet executeQuery(String execute) throws SQLException {
 //        Connection connection = MySQLMethods.getConnection();
 
-        Connection connection = DBCPDataSource.getConnection();
+//        connection.close();
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(execute);
+
         return resultSet;
+
     }
 
 
@@ -52,7 +62,8 @@ public class MySQLMethods {
         Connection connection = DBCPDataSource.getConnection();
         Statement statement = connection.createStatement();
         statement.executeUpdate(insert);
-        connection.close();
+//        connection.close();
+
     }
 
     public static void updateQyery(String update) throws SQLException {
@@ -61,18 +72,18 @@ public class MySQLMethods {
         Connection connection = DBCPDataSource.getConnection();
         Statement statement = connection.createStatement();
         statement.executeUpdate(update);
-        connection.close();
+//        connection.close();
+
 
     }
 
     public static void deleteQyery(String delete) throws SQLException {
 //        Connection connection = MySQLMethods.getConnection();
 
-
         Connection connection = DBCPDataSource.getConnection();
         Statement statement = connection.createStatement();
         statement.executeUpdate(delete);
-        connection.close();
+//        connection.close();
     }
 
 

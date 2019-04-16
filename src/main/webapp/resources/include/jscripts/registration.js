@@ -11,16 +11,19 @@ $(document).ready(function(){
             success:function(data)//Если запрос удачен
             {
                 var parserData = JSON.parse(data);
-                parserDate = null;
 
 
                 $('#labelUser').html(parserData.name);
                 $('#labelpassword').html(parserData.password);
                 $('#labelpasswordRepeat').html(parserData.passwordRepeat);
 
+
+
                 if (parserData.name === "" && parserData.password === "" && parserData.passwordRepeat === undefined){
                     document.location.href = "http://localhost:8080/login"
                 }
+
+
 
             },
             error: function(e)//Если запрос не удачен

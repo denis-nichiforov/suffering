@@ -20,6 +20,8 @@ public class RegistrationPageValidation {
         } else {
             if (name.length() > 16) {
                 error = "The length of the name no more 16 characters";
+            }else {
+                error = "";
             }if (name.length() < 3) {
                 error = "The length of the name at least 3 characters";
             }else {
@@ -35,7 +37,10 @@ public class RegistrationPageValidation {
         String error = null;
         if (password.length() > 16) {
             error = "The length of the password no more 16 characters";
-        }if (password.length() < 6) {
+        }else {
+            error = "";
+        }
+        if (password.length() < 6) {
             error = "The length of the password at least 6 characters";
         }else {
             error = "";

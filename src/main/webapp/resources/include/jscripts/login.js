@@ -18,7 +18,7 @@ $(document).ready(function(){
                 }
 
                 $('#labelUser').html(parserData.name);
-                $('#labelpassword').html(parserData.password);
+                $('#labelPassword').html(parserData.password);
 
 
                 // var id = parserData.id;

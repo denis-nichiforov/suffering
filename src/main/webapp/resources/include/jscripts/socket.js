@@ -5,34 +5,39 @@ window.onload = function () {
 
     //открытие соединения
     socket.onopen = function (event) {
-        tn1.innerHTML = "соединение установлено"
+        tm1.innerHTML = "соединение установлено "
     }
 
     //закрытие соединения
     socket.onclose = function (event) {
-        if(event.wasClean){
-            tn1.innerHTML = "соединение закрыто";
-        }else{
-            tn1.innerHTML = "соединение как-то закрыто";
+        if (event.wasClean) {
+            tm1.innerHTML = "соединение закрыто";
+        } else {
+            tm1.innerHTML = "соединение как-то закрыто";
         }
-        tn1.innerHTML += " код:" + event.code + "\nпричина:" + event.reason;
+        tm1.innerHTML += " код : " + event.code + "\n" + "причина:" + event.reason;
     }
 
     //возникновение ошибки
     socket.onerror = function (event) {
-        tn1.innerHTML = "ошибка:" + event.message;
+        tm1.innerHTML = "ошибка:" + event.message;
 
 
     }
     //получение сообщения
     socket.onmessage = function (event) {
-        var letter  = JSON.parse(event.data);
-        tn1.innerHTML = "пришли данные от " + letter.name + "\nсообщение : " + letter.message;
+        var data = JSON.parse(event.data);
+
+        var $message;
+        $message = $($('.message_template').clone().html());
+        $message.addClass("left appeared").find('.text').html("пришли данные от " + data.name + "\n сообщение : " + data.message);
+        $('.messages').append($message);
+
     }
 
     //отправка сообщения
     document.forms["form"].onsubmit = function () {
-        var letter  = {
+        var letter = {
             name: this.name.value,
             message: this.message.value
         }
@@ -40,4 +45,6 @@ window.onload = function () {
         socket.send(JSON.stringify(letter));
         return false;
     }
+
+
 }
