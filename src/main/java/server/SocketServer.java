@@ -11,13 +11,13 @@ public class SocketServer {
 
 
     private static Set<Session> client = new HashSet<>();
-//    private static List<String> messages = new ArrayList<>();
 
     @OnOpen
     public void onOpen(Session session) {
         client.add(session);
 //        System.out.println("Open Connection ..." + session.getId());
     }
+
 
 
     @OnClose
@@ -51,7 +51,7 @@ public class SocketServer {
     }
 
 
-    //    public String onMessage(String message){
+//        public String onMessage(String message){
 //        System.out.println("Message from the client: " + message);
 //
 //
@@ -67,7 +67,7 @@ public class SocketServer {
 //            return message;
 //       }
 //    }
-//
+
 
 
 }

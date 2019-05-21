@@ -15,7 +15,11 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 @WebServlet("/registration")
-public class RegistrationPage  extends HttpServlet {
+public class RegistrationPage extends HttpServlet {
+
+
+
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,23 +29,23 @@ public class RegistrationPage  extends HttpServlet {
     }
 
 
-
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected  void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         JSONObject jsonEnt = new JSONObject();
         String user = request.getParameter("user");
         String password = request.getParameter("password");
         String passwordRepeat = request.getParameter("passwordRepeat");
         PrintWriter out = response.getWriter();
 
-        if (user != null ){
+        if (user != null) {
             try {
                 jsonEnt.put("name", RegistrationPageValidation.nameRegistration(user));
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-        if (password != null){
+        if (password != null) {
             jsonEnt.put("password", RegistrationPageValidation.passwordRegistration(password));
         }
         try {
@@ -49,9 +53,9 @@ public class RegistrationPage  extends HttpServlet {
                     & RegistrationPageValidation.passwordRegistration(password).equals("")
                     & RegistrationPageValidation.nameRegistration(user).equals("")
 
-            ){
+            ) {
 
-                String query = "INSERT INTO `date`.`user` (`name`, `password`) VALUES ('"+user+"', '"+password+"');";
+                String query = "INSERT INTO `date`.`user` (`name`, `password`) VALUES ('" + user + "', '" + password + "');";
 
                 try {
                     MySQLMethods.insertQuery(query);
@@ -59,8 +63,8 @@ public class RegistrationPage  extends HttpServlet {
                     e.printStackTrace();
                 }
 
-            }else {
-                jsonEnt.put("passwordRepeat", RegistrationPageValidation.passwordRepeatRegistration(password,passwordRepeat));
+            } else {
+                jsonEnt.put("passwordRepeat", RegistrationPageValidation.passwordRepeatRegistration(password, passwordRepeat));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -69,7 +73,7 @@ public class RegistrationPage  extends HttpServlet {
         out.print(jsonEnt);
         out.flush();
         out.close();
-
-
     }
+
+
 }

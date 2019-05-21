@@ -2,10 +2,10 @@ package database;
 
 import java.sql.*;
 
-public class MySQLMethods {
+abstract public class  MySQLMethods {
 
 
-    public static Connection connection;
+     private static Connection connection;
 
     static {
         try {
@@ -59,7 +59,7 @@ public class MySQLMethods {
     public static void insertQuery(String insert) throws SQLException {
 //       Connection connection = MySQLMethods.getConnection();
 
-        Connection connection = DBCPDataSource.getConnection();
+
         Statement statement = connection.createStatement();
         statement.executeUpdate(insert);
 //        connection.close();
@@ -69,7 +69,6 @@ public class MySQLMethods {
     public static void updateQyery(String update) throws SQLException {
 //        Connection connection = MySQLMethods.getConnection();
 
-        Connection connection = DBCPDataSource.getConnection();
         Statement statement = connection.createStatement();
         statement.executeUpdate(update);
 //        connection.close();
@@ -80,7 +79,6 @@ public class MySQLMethods {
     public static void deleteQyery(String delete) throws SQLException {
 //        Connection connection = MySQLMethods.getConnection();
 
-        Connection connection = DBCPDataSource.getConnection();
         Statement statement = connection.createStatement();
         statement.executeUpdate(delete);
 //        connection.close();

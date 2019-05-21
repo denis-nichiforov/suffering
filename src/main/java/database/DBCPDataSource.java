@@ -14,8 +14,6 @@ public class DBCPDataSource {
         basicDataSource.setUrl("jdbc:mysql://localhost:3306/date?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
         basicDataSource.setUsername("root");
         basicDataSource.setPassword("nikoli");
-//        basicDataSource.setDefaultAutoCommit(true);
-//        basicDataSource.setMaxWait(5);
         basicDataSource.setMaxActive(5);
         basicDataSource.setMinIdle(100);              //Устанавливает минимальное количество незанятых соединений в пуле.
         basicDataSource.setMaxIdle(10000);             //Устанавливает максимальное количество соединений, которые могут оставаться незанятыми в пуле.

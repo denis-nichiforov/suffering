@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class IndexPage extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected  void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
 
@@ -50,9 +50,9 @@ public class IndexPage extends HttpServlet {
             }
             request.setAttribute("id", a);
             request.getRequestDispatcher("/WEB-INF/view/main.jsp").forward(request, response);
-
         }
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
